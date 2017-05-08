@@ -1,0 +1,88 @@
+<div class="ftcontentwrapper">
+    <div class="ftmoviesearchbox">
+      <input type="text" placeholder="Enter the movie name" ng-model="searchMovie">
+      <button class="searchmoviebutton" ng-click="movieSearch()" data-toggle="modal" data-target="#searchmoviemodal"><i class="fa fa-get-pocket" aria-hidden="true"></i></button>
+</div>
+</div>
+
+<div id="searchmoviemodal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <div class="row">
+          <div class="col-lg-5 col-md-5 col-sm-6">
+              <div class="moviepostercontainer">
+                  <div class="movieposterwrapper">
+                    <img src="{{movieData.Poster}}" alt="Image poster">
+                  </div>
+              </div>
+          </div>
+          <div class="col-lg-7 col-md-7 col-sm-6">
+            <div class="moviepostercontainer">
+                <div class="movieposterwrapper">
+                  <h3>{{movieData.Title}}</h3>
+                  <span>Genre: {{movieData.Genre}}</span>
+                  <span>Director: {{movieData.Director}}</span>
+                  <span>Writer: {{movieData.Writer}}</span>
+                  <span>Actors: {{movieData.Actors}}</span>
+                    <span>Production: {{movieData.Production}}</span>
+                </br>
+                  <span>{{movieData.Plot}}</span>
+                </br>
+
+                  <span class="moviedetailelements1">Released: {{movieData.Released}}</span>
+                  <span class="moviedetailelements1 itempipe">Runtime: {{movieData.Runtime}}</span>
+                  <span class="moviedetailelements1">Language: {{movieData.Language}}</span>
+                </br>
+                  <span class="moviedetailelements2">Country: {{movieData.Country}}</span>
+                  <span class="moviedetailelements2 itempipe2">BoxOffice: {{movieData.BoxOffice}}</span>
+                  <div class="imdbratinginfo">
+                  <div class="row">
+                  <div class="col-md-9 ">
+                    <span class="imdbratingitems">IMDB Rating: {{movieData.imdbRating +' '+ '/ 10'}}</span>
+                    <span class="imdbratingitems">
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                  </span>
+                  </div>
+
+                  <div class="col-md-3"><i class="fa fa-heart" aria-hidden="true"></i>{{movieData.imdbVotes}}</div>
+                </div>
+              </div>
+
+                </div>
+              </div>
+          </div>
+        </div>
+        <div class="addnewmoviebuttoncontainer">
+        <button ng-click="addsearchedmovie()" data-dismiss="modal" class="ftbuttoncat1 ftbuttoncol-1">Add movie</button>
+        <button data-dismiss="modal" class="ftbuttoncat1 ftbuttoncol-2">View in IMDB</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+  <!--Get the newly added movie-->
+<div class="newlyaddedmoviecontainer">
+  <div class="newlyaddedmoviewrapper">
+    <div class="repeatitems" ng-repeat="latest in getnewlyaddmovie">
+    <div class="row">
+      <div class="col-md-3 col-sm-3 col-xs-12" >
+        <div class="movieitems">
+          <img src="{{latest.Poster}}" alt="Image poster">
+        </div>
+      </div>
+      <div class="col-md-9 col-sm-9 col-xs-12">
+
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
