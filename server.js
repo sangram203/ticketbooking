@@ -8,6 +8,7 @@ var morgan = require('morgan');
 var app = express();
 var routes = require('./server/routes/addtheatreroute');
 var search = require('./server/routes/searchmovieroute');
+var mapmovie = require('./server/routes/mapnewmovierouter');
 var port = 4000;
 
 //databaseconnection
@@ -33,7 +34,7 @@ app.use(cors());
 app.use(express.static(path.join(__dirname, 'client')));
 app.use('/api', routes);
 app.use('/new', search);
-
+app.use('/map', mapmovie);
 //Server connection
 app.listen(port, function(){
   console.log('server is running on port:' + port);
