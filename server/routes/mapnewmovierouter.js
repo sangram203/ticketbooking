@@ -7,9 +7,15 @@ mapnewmovie.get('/mapnewmovie', function(req, res, next){
     res.json(newaddedmovie);
   });
 });
+
 mapnewmovie.get('/mapnewmovietheatrename', function(req, res, next){
-  addnewtheatre.find({}, '_id',function(err, newaddedmovie){
-    res.json(newaddedmovie);
+  addnewtheatre.find({city_name: req.body.city_name},function(err,data){
+    if(err){
+      res.json({msg: 'Failed to add movie'})
+    }
+    else{
+      res.json(data);
+    }
   });
 });
 module.exports = mapnewmovie;
