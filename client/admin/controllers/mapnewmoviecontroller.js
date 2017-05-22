@@ -40,30 +40,22 @@ app.controller('mapnewmoviecontroller', function($scope, $http){
  ];
  $('#getSelectedshowtime').click(function(){
      var str = "";
-    var showTime = Array();
      $( "#showtimebox option:selected" ).each(function() {
-       str += $( this ).text() + " ";
-       showTime.push(str);
-       $("#selectedshowtime ul").append('<li class="showtimeitems"><button class="fa fa-times-circle showtimebutton" aria-hidden="true"></button>' + showTime[showTime.length - 1] + '</li>');
+       str += $( this ).text();
+       $("#selectedshowtime").append('<li class="showtimeitems"><button class="fa fa-times-circle showtimebutton" aria-hidden="true"></button>' + str+ '</li>');
        $('.showtimebutton').click(function(){
          $(this).closest('.showtimeitems').remove();
        });
-
-       return showTime;
      });
-     $scope.show_time = showTime;
-     console.log($scope.show_time);
  });
  //Date picker functionality
  $( function() {
     $( "#datepicker" ).datepicker();
     var str = "";
-    var showDate = Array();
     $("#getSelectedshowdate").on("click",function(){
      $( "#showtimebox option:selected" ).each(function() {
-       str = $("#datepicker").val() + " ";
-       showDate.push(str);
-       $("#selectedDate ul").append('<li class="showdate"><button class="fa fa-times-circle showdatebutton" aria-hidden="true"></button>' + showDate[showDate.length - 1] + '</li>');
+       str = $("#datepicker").val();
+       $("#selectedDate").append('<li class="showdate"><button class="fa fa-times-circle showdatebutton" aria-hidden="true"></button>' + str + '</li>');
        $('.showdatebutton').click(function(){
          $(this).closest('.showdate').remove();
        });
@@ -74,23 +66,49 @@ app.controller('mapnewmoviecontroller', function($scope, $http){
   $scope.mappedmoviepost= function(){
         $scope.moviename = document.getElementById("moviename").value;
         $scope.cityname = document.getElementById("cityname").value;
-        // $('#selecteditems ul li').each(function(){var phrases = [];var phrase = '';phrase += $(this).text();phrases.push(phrase);console.log(phrases);});
-        var theatrename = document.getElementById("selecteditems").getElementsByTagName("span");
-          var array = []
-          for (i=0;i<theatrename.length;i++) {
-            var x = theatrename[i].innerHTML;
-            var y = array.concat(theatrename[i].innerHTML)
+
+        //get the selected theatre array[]
+        function theatresName(){
+          var theatres = [];
+          var name = '';
+          $('#selecteditems li').each(function(){
+            name = $(this).text();
+            theatres.push(name);
+          });
+          return theatres;
+        }
+        var selectedTheatres = theatresName();
+
+          //get the selected show timing array[]
+          function showTime(){
+            var shows = [];
+            var time = '';
+            $('#selectedshowtime li').each(function(){
+              time = $(this).text();
+              shows.push(time);
+            });
+            return shows;
           }
-          console.log(array);
-        console.log($scope.moviename);
-        console.log($scope.cityname);
-       var detailsoftheatres ={
+          var selectedshowtime = showTime();
+
+          //get the selected show date array[]
+          function showDate(){
+            var showsD = [];
+            var date = '';
+            $('#selectedDate li').each(function(){
+              date = $(this).text();
+              showsD.push(date);
+            });
+            return showsD;
+          }
+          var selectedshowdate = showDate();
+         var detailsoftheatres ={
          movie_name:$scope.moviename,
          city_name:$scope.cityname,
-         selected_theater:["10:00pm","9:00am"],
-         selected_showtime:["10:00pm","9:00am"],
-         selected_showdate:["23/05/2017","12/04/2017"]
-       };
+         selected_theater: selectedTheatres,
+         selected_showtime:selectedshowtime,
+         selected_showdate:selectedshowdate
+        };
        $http.post("/map/addnewmaptheatre/", detailsoftheatres).success(function(detailsoftheatres, status) {
          console.log('Data posted successfully');
        })
