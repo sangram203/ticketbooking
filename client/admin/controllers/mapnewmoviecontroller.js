@@ -25,7 +25,7 @@ app.controller('mapnewmoviecontroller', function($scope, $http){
      var str = "";
      $( "#selectedElements option:selected" ).each(function() {
        str += $( this ).text();
-       $("#selecteditems ul").append('<li class="theatreName"><button class="fa fa-times-circle buttons" aria-hidden="true"></button>'+str+'</li>');
+       $("#selecteditems").append('<li class="theatreName"><button class="fa fa-times-circle buttons" aria-hidden="true"></button><span>'+str+'</span></li>');
        $('.buttons').click(function(){
          $(this).closest('.theatreName').remove();
        });
@@ -74,7 +74,14 @@ app.controller('mapnewmoviecontroller', function($scope, $http){
   $scope.mappedmoviepost= function(){
         $scope.moviename = document.getElementById("moviename").value;
         $scope.cityname = document.getElementById("cityname").value;
-        $('#selecteditems ul li').each(function(){var phrases = [];var phrase = '';phrase += $(this).text();phrases.push(phrase);console.log(phrases);});
+        // $('#selecteditems ul li').each(function(){var phrases = [];var phrase = '';phrase += $(this).text();phrases.push(phrase);console.log(phrases);});
+        var theatrename = document.getElementById("selecteditems").getElementsByTagName("span");
+          var array = []
+          for (i=0;i<theatrename.length;i++) {
+            var x = theatrename[i].innerHTML;
+            var y = array.concat(theatrename[i].innerHTML)
+          }
+          console.log(array);
         console.log($scope.moviename);
         console.log($scope.cityname);
        var detailsoftheatres ={
