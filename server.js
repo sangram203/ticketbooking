@@ -25,13 +25,14 @@ mongoose.connect('mongodb://localhost:27017/data/db/movie');
     }
   });
 //uses of modules
-// app.use('/', function(req, res){
-// res.render('time is good');
-// })
+
 app.use(bodyParser.json());
 app.use(cors());
 app.set ('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'client')));
+app.get('/adminpanel', function(req, res){
+  res.sendFile(__dirname + '/client/adminpanel.html');
+});
 app.use('/api', routes);
 app.use('/new', search);
 app.use('/map', mapmovie);
