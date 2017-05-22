@@ -1,2 +1,2 @@
-var app = angular.module('ftmainmodule', ['ngRoute']).controller('ftmaincontroller', function($scope){
+var app = angular.module('ftmainmodule', ['ngRoute','angular.filter']).controller('ftmaincontroller', function($scope){
 });

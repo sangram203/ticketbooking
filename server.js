@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var cors = require('cors');
 var morgan = require('morgan');
-
+var ejs = require('ejs');
 var app = express();
 var routes = require('./server/routes/addtheatreroute');
 var search = require('./server/routes/searchmovieroute');
@@ -30,7 +30,7 @@ mongoose.connect('mongodb://localhost:27017/data/db/movie');
 // })
 app.use(bodyParser.json());
 app.use(cors());
-
+app.set ('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'client')));
 app.use('/api', routes);
 app.use('/new', search);

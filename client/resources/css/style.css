@@ -234,3 +234,31 @@ font-weight: bold;
   padding:10px;
   margin:10px 0px;
 }
+.theatreName, .showtimeitems{
+  border:1px solid gray;
+  position:relative;
+  border-radius:40px;
+  display:inline-block;
+  margin:10px;
+  padding:3px 10px;
+}
+.theatreName .fa-times-circle, .showtimeitems .fa-times-circle{
+  position:absolute;
+  top:-6px;
+  right:0;
+  cursor: pointer;
+}
+.ui-datepicker th{
+  display: inline-block;
+  padding: .7em 8px !important;
+}
+.ui-datepicker td{
+  float:left;
+  width: 36px !important;
+}
+.ui-datepicker-title span{
+  display: inline-block;
+}
+/*.ui-datepicker-calendar tr td, .ui-datepicker-calendar tr th{
+  float:left !important;
+}*/
