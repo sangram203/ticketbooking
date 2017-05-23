@@ -9,6 +9,7 @@ var app = express();
 var routes = require('./server/routes/addtheatreroute');
 var search = require('./server/routes/searchmovieroute');
 var mapmovie = require('./server/routes/mapnewmovierouter');
+var selectmovie = require('./server/routes/movieselection');
 var port = 4000;
 
 //databaseconnection
@@ -33,9 +34,13 @@ app.use(express.static(path.join(__dirname, 'client')));
 app.get('/adminpanel', function(req, res){
   res.sendFile(__dirname + '/client/adminpanel.html');
 });
+app.get('/seatbooking', function(req, res){
+  res.sendFile(__dirname + '/client/seatbooking.html');
+});
 app.use('/api', routes);
 app.use('/new', search);
 app.use('/map', mapmovie);
+app.use('/user', selectmovie);
 //Server connection
 app.listen(port, function(){
   console.log('server is running on port:' + port);

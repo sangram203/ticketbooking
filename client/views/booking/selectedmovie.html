@@ -1,0 +1,8 @@
+<h1>this is selected</h1>
+<div>
+  <p>choose a city name</p>
+  <select ng-model="userscity.city_name">
+    <option ng-repeat="movie in retrivedmovie">{{movie.city_name}}</option>
+  </select>
+</div>
+<a href="#/choosetheatre">add</a>
