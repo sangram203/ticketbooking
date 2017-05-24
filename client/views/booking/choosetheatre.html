@@ -1,2 +1,5 @@
 <h1>Choose theatres</h1>
-<a href="#/chooseshowtime">add</a>
+
+<ul>
+  <li ng-repeat="movie in retrivedmovie"><a href="#/chooseshowtime" ng-click="getusertheatrename()">{{movie.selected_theatres}}</a></li>
+</ul>

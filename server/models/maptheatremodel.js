@@ -10,15 +10,15 @@ const addnewmapTheatreSchema = mongoose.Schema({
     required:true
   },
   selected_theatres:{
-    type:Array,
+    type:String,
     required:true
   },
   selected_showtime:{
-    type:Array,
+    type:String,
     required:true
   },
   selected_showdate:{
-    type:Array,
+    type:String,
     required:true
   }
 });

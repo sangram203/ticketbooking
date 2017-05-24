@@ -1,8 +1,7 @@
 <h1>this is selected</h1>
 <div>
   <p>choose a city name</p>
-  <select ng-model="userscity.city_name">
-    <option ng-repeat="movie in retrivedmovie">{{movie.city_name}}</option>
-  </select>
+  <ul ng-model="userscity">
+    <li ng-repeat="movie in retrivedmovie"><a href="#/choosedate" ng-click="getthecitydata()">{{movie.city_name}}</a></li>
+  </ul>
 </div>
-<a href="#/choosetheatre">add</a>

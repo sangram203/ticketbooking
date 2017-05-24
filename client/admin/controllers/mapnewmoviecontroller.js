@@ -10,7 +10,32 @@ app.controller('mapnewmoviecontroller', function($scope, $http){
   $scope.getavailablemovie =response.data;
   console.log($scope.getavailablemovie);
 });
+var displayTheaterMovies = function(){$http.get('/map/getsearchmoviedetails').then(function(response){
+ $scope.getavailablemovies =response.data;
+ console.log($scope.getavailablemovies);
+});
+};
+displayTheaterMovies();
+$scope.deleteTheaterMovies = function(getavailablemovies){
+      var m =confirm("Are you sure you want to delete ?");
+      if(m){
+        $http.delete('/map/deletetheatermovies/'+getavailablemovies._id).success(function (response) {
+      });
+//
+// $http.get('/mt_map/selmoviename/'+mapData.Title).success(function (response) {
+//             len=response.length;
+//             alert("len "+len);
+//             if(len==0)
+//             {
+//               var val='false';
+//          $http.put('/api/updatemoviestatus/'+mapData.Title+'/'+val).success(function (response) {
+//                  });
+//             }
+//           });
 
+    }
+displayTheaterMovies();
+  };
  //Get & post the Selected city and corresponding theatres
  $scope.selectedcity = function(){
    console.log($scope.mapselectedcity.city_name);
@@ -69,37 +94,37 @@ app.controller('mapnewmoviecontroller', function($scope, $http){
 
         //get the selected theatre array[]
         function theatresName(){
-          var theatres = [];
+          // var theatres = [];
           var name = '';
           $('#selecteditems li').each(function(){
             name = $(this).text();
-            theatres.push(name);
+            // theatres.push(name);
           });
-          return theatres;
+          return name;
         }
         var selectedTheatres = theatresName();
 
           //get the selected show timing array[]
           function showTime(){
-            var shows = [];
+            // var shows = [];
             var time = '';
             $('#selectedshowtime li').each(function(){
               time = $(this).text();
-              shows.push(time);
+              // shows.push(time);
             });
-            return shows;
+            return time;
           }
           var selectedshowtime = showTime();
 
           //get the selected show date array[]
           function showDate(){
-            var showsD = [];
+            // var showsD = [];
             var date = '';
             $('#selectedDate li').each(function(){
               date = $(this).text();
-              showsD.push(date);
+              // showsD.push(date);
             });
-            return showsD;
+            return date;
           }
           var selectedshowdate = showDate();
          var detailsoftheatres ={

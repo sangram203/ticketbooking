@@ -13,6 +13,16 @@ mapnewmovie.get('/getsearchmoviename', function(req, res, next){
     res.json(newaddedmovie);
   });
 });
+mapnewmovie.get('/getsearchmoviedetails', function(req, res, next){
+  maptheatremodel.find({},function(err, newaddedmovie){
+    res.json(newaddedmovie);
+  });
+});
+mapnewmovie.delete('/deletetheatermovies/:id',function(req, res){
+  maptheatremodel.remove({_id:req.params.id},function(err, docs){
+    console.log('Movie Removed Successfully');
+  });
+});
 
 mapnewmovie.get('/mapnewmovie', function(req, res, next){
   addnewtheatre.find({},'city_name',function(err, newaddedmovie){

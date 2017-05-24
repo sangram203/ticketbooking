@@ -1,3 +1,22 @@
-<div>
-  delete threatre details......
+<div ng-controller="mapnewmoviecontroller">
+  <div class="row">
+    <div class="col-sm-2">
+      <div ng-repeat="m in getavailablemovies" class="deltecityname">{{m.city_name}}</div>
+    </div>
+    <div class="col-sm-2">
+      <div ng-repeat="m in getavailablemovies" class="deltecityname">{{m.movie_name}}</div>
+    </div>
+    <div class="col-sm-2">
+      <div ng-repeat="m in getavailablemovies" class="deltecityname">{{m.selected_showdate}}</div>
+    </div>
+    <div class="col-sm-2">
+      <div ng-repeat="m in getavailablemovies" class="deltecityname">{{m.selected_showtime}}</div>
+    </div>
+    <div class="col-sm-2">
+      <div ng-repeat="m in getavailablemovies" class="deltecityname">{{m.selected_theatres}}</div>
+    </div>
+    <div class="col-sm-2">
+      <div ng-repeat="m in getavailablemovies"><button type="button" name="button" class="glyphicon glyphicon-trash btn btn-danger" ng-click="deleteTheaterMovies(m)" id="{{m._id}}"></button></div>
+    </div>
+  </div>
 </div>

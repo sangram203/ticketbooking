@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html ng-app="ftmainmodule">
+  <head>
+    <title>Flick Tickets</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="resources/lib/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="resources/css/style.css">
+    <link rel="stylesheet" href="resources/lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+  </head>
+  <body>
+    <div class="ftMainContainer">
+      <div class="ftMainWrapper">
+        <nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Flick ticket</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home<span class="sr-only">(current)</span></a></li>
+        <li><a href="#">about</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">Welcome to flick tickets</a></li>
+        <li class="dropdown">
+          <span class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></span>
+          <ul class="dropdown-menu">
+            <li><a href="#">Sign in</a></li>
+            <li><a href="#">Settings</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">See as user</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+          <div ng-controller="getmovielist">
+          <div>
+
+            <div class="container">
+<br><br><br>
+<div class="row">
+<div class="col-md-8">
+
+<div class="row">
+
+  <div class="col-md-12">
+    <h3 class="strip">
+    <p class="ppay">
+    Payment Options
+    </p>
+    </h3>
+
+    <div class="row">
+      <div class="col-md-2">
+      </div>
+
+      <div class="col-md-8">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"><img class="pull-right" src="images/bank.png">Payment Details</h3>
+            </div>
+            <div class="panel-body">
+                <form role="form" id="payment-form">
+                  <div class="row">
+                      <div class="col-xs-12">
+                          <div class="form-group">
+                              <label for="p_name">Name</label>
+                              <div class="input-group">
+                                  <input type="text" class="form-control" name="p_name" placeholder="Enter Name" ng-model="pmt.name" required="true"/>
+                                  <span class="input-group-addon"></span>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+
+
+                  <div class="row">
+                      <div class="col-xs-12">
+                          <div class="form-group">
+                              <label for="email">Email ID</label>
+                              <div class="input-group">
+                                  <input type="email" class="form-control" name="email" placeholder="Valid Email" required autofocus data-stripe="number" ng-model="pmt.email" required="true"/>
+                                  <span class="input-group-addon"></span>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+
+
+<div class="row">
+<div class="col-xs-12">
+<div class="form-group">
+  <label for="contact">Contact</label>
+    <div class="input-group">
+      <input type="number" class="form-control" name="contact" placeholder="Valid Phone No" required autofocus data-stripe="number" ng-model="pmt.contact" min="10"/>
+      <span class="input-group-addon"></span>
+  </div>
+</div>
+</div>
+</div>
+
+
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="form-group">
+                                <label for="cardNumber">CARD NUMBER</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" name="cardNumber" placeholder="Valid Card Number" required="true"  autofocus data-stripe="number"  min="16" max="16" id="pmt.cardNumber"/>
+                                    <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-7 col-md-7">
+                            <div class="form-group">
+                              <div class="col-xs-6 col-lg-6 pl-ziro">
+                                <label for="expMonth">EXPIRATION DATE</label>
+                                    <input type="text" class="form-control" name="expMonth" placeholder="MM" required data-stripe="exp_month" />
+                                </div>
+                                <div class="col-xs-6 col-lg-6 pl-ziro">
+                                    <input type="text" class="form-control" name="expYear" placeholder="YY" required data-stripe="exp_year" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-5 col-md-5 pull-right">
+                            <div class="form-group">
+                                <label for="cvCode">CV CODE</label>
+                                <input type="password" class="form-control" name="cvCode" placeholder="CV" required data-stripe="cvc" />
+                            </div>
+                        </div>
+                    </div>
+                                              <div class="row">
+                        <div class="col-xs-12">
+                            <button class="btn btn-success btn-lg btn-block" type="submit" ng-click="confirmPage()">Submit</button>
+                        </div>
+                    </div>
+                    <div class="row" style="display:none;">
+                        <div class="col-xs-12">
+                            <p class="payment-errors"></p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+      </div>
+      <br>
+      <div class="col-md-2">
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<div class="col-md-4">
+<h3 class="strip">
+  <p class="ppay">
+ ORDER SUMMARY
+</p>
+</h3>
+<div class="well">
+<div class="table-responsive">
+<table class="table table-default">
+<tbody>
+    <tr>
+      <td id="mname">Movie Name</td>
+      <td>{{userMoviename}}</td>
+      </tr>
+      <tr>
+        <td>Theatre Name</td>
+        <td id="cinema">{{usertheatrename}}</td>
+        </tr>
+
+        <tr>
+          <td>Seat No</td>
+          <td id="seatno" width="1%"  >{{seattotal}}</td>
+          </tr>
+          <tr>
+            <td>Show Timings</td>
+            <td id="showtime">{{usershowdate}}</td>
+            </tr>
+            <tr>
+              <td>Total Tickets</td>
+              <td id="t_ticket">{{userNumberSeat}}</td>
+              </tr>
+              <tr>
+                <td>Amount</td>
+                <td id="amount">{{totalAmount}}</td>
+                </tr>
+
+  </tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</div>
+</div>
+</div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="resources/lib/jquery.js" type="text/javascript"></script>
+        <script src="resources/lib/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="resources/lib/angular.min.js"></script>
+    <script src="resources/lib/angular-route.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-filter/0.5.8/angular-filter.min.js"></script>
+
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+
+
+
+    <script src="admin/controllers/app.js"></script>
+    <script src="admin/controllers/adminroutercontroller.js"></script>
+    <script src="admin/controllers/searchmoviecontroller.js"></script>
+    <script src="admin/controllers/addnewtheatrecontroller.js"></script>
+    <script src="admin/controllers/mapnewmoviecontroller.js"></script>
+    <script src="user/controllers/user.js"></script>
+  <script src="user/controllers/bookingmovierouter.js"></script>
+
+  </body>
+</html>
